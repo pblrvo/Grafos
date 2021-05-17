@@ -49,7 +49,7 @@ public class GraphTest
         assertTrue(resultado);
         assertEquals(expectedOutput
                 + "1[2]\n"
-                + "2[1]\n", graphInts.toString());
+                + "2[]\n", graphInts.toString());
     }
 
     @Test
@@ -62,12 +62,7 @@ public class GraphTest
         assertFalse(resultado2);
     }
 
-    @Test(expected = Exception.class)
-    public void addingEdgeFailNonExists() throws Exception {
-        this.graphInts.addVertex(1);
-        boolean resultado = this.graphInts.addEdge(1, 2);
-        assertFalse(resultado);
-    }
+
 
     @Test
     public void obtainAdjacentsOk() throws Exception {

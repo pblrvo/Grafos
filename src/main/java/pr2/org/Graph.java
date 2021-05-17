@@ -39,8 +39,6 @@ public class Graph<V> {
                       return false;
               } else{
                       edges.add(v2);
-                      edges = adjacencyList.get(v2);
-                      edges.add(v1);
                       return true;
               }
         }
@@ -101,41 +99,23 @@ public class Graph<V> {
          ******************************************************************/
         public List<V> onePath(V v1, V v2) {
                 List<V> traza = new ArrayList<>();
-                List<V> visitados = new ArrayList<>();
                 Stack<V> abierta = new Stack<>();
                 abierta.push(v1);
-                traza.add(v1);
-                visitados.add(v1);
                 boolean encontrado = false;
-
                 while (!abierta.isEmpty() && !encontrado) {
                         V verticeVisitando =  abierta.pop();
-
-                        for(V adjacents : adjacencyList.get(verticeVisitando)) {
-                                visitados.add(verticeVisitando);
-                                if (verticeVisitando == v2) {
-                                        encontrado = true;
-                                } else {
-                                        for (V annadirAdyacentes : adjacencyList.get(verticeVisitando)) {
-                                                traza.add(verticeVisitando);
-                                                visitados.add(annadirAdyacentes);
-                                                abierta.push(annadirAdyacentes);
-                                        }
-                                }
-
-                                if (visitados.contains(verticeVisitando)) {
-                                        traza.remove(verticeVisitando);
+                        traza.add(verticeVisitando);
+                        if(verticeVisitando.equals(v2)){
+                                encontrado = true;
+                        } else {
+                                for(V adjacentsVisit : this.adjacencyList.get(verticeVisitando)){
+                                        abierta.push(adjacentsVisit);
                                 }
                         }
-                }
-
-                if (encontrado) {
-                        return traza;
-                } else {
-                        return abierta;
-                }
+                        if (encontrado) {
+                                return traza;
+                        }
+                } return null;
         }
-
-
 }
 
