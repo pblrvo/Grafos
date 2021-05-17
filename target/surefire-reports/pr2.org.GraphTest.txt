@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: pr2.org.GraphTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 23.729 s <<< FAILURE! - in pr2.org.GraphTest
+onePathFindsAPath(pr2.org.GraphTest)  Time elapsed: 23.61 s  <<< ERROR!
+java.lang.OutOfMemoryError: Java heap space
+	at pr2.org.GraphTest.onePathFindsAPath(GraphTest.java:132)
+
