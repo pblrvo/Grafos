@@ -1,3 +1,18 @@
+/*
+Copyright [2021] [Pablo Rivero]
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing,
+software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied.
+See the License for the specific language governing permissions
+and
+limitations under the License.
+ */
 package pr2.org;
 
 import org.junit.Test;
@@ -8,7 +23,11 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
-
+/**
+ * Clase GraphTest que contiene una serie de Test que garantizan el funcionamiento optimo del programa
+ * @author Pablo Rivero
+ * @version 21.2, 19/05/2021
+ */
 public class GraphTest
 {
 
@@ -19,11 +38,18 @@ public class GraphTest
         this.graphInts = new Graph<>();
     }
 
+    /**
+     * Este test comprueba que el registro creado existe
+     */
     @Test
     public void registroExistsObject() {
         assertNotNull(this.graphInts);
     }
 
+    /**
+     * Este test comprueba que el método 'addVertex(V v)'
+     * annade un vertice y cumple con la estructura del toString().
+     */
     @Test
     public void addingVertexOk(){
         String expectedOutput = "Vertex\t Edge\n";
@@ -32,6 +58,10 @@ public class GraphTest
         assertEquals(expectedOutput + "1[]\n" , graphInts.toString());
     }
 
+    /**
+     * Este test comprueba que el método ‘addVertex(V v)'
+     * no permite annadir dos vertices con el mismo valor.
+     */
     @Test
     public void addingVertexFail(){
         boolean resultado1 = this.graphInts.addVertex(1);
@@ -40,6 +70,11 @@ public class GraphTest
         assertFalse(resultado2);
     }
 
+    /**
+     * Este test comprueba que el método ‘addEdge(V v1, V v2)'
+     * annade un adyacente a un vertice y cumple con la
+     * estructura del metodo toString.
+     */
     @Test
     public void addingEdgeOk(){
         String expectedOutput = "Vertex\t Edge\n";
@@ -52,6 +87,10 @@ public class GraphTest
                 + "2[]\n", graphInts.toString());
     }
 
+    /**
+     * Este test comprueba que el método ‘addEdge(V v1, V v2)'
+     * no permita annadir dos adyacentes con los mismos valores.
+     */
     @Test
     public void addingEdgeFail(){
         this.graphInts.addVertex(1);
@@ -63,7 +102,10 @@ public class GraphTest
     }
 
 
-
+    /**
+     * Este test comprueba que el método ‘obtainAdjacents(V v1, V v2)'
+     * devuelva el adyacente del vertice.
+     */
     @Test
     public void obtainAdjacentsOk() throws Exception {
         this.graphInts.addVertex(1);
@@ -76,12 +118,20 @@ public class GraphTest
         assertTrue(this.graphInts.obtainAdjacents(1).contains(3));
     }
 
+    /**
+     * Este test comprueba que el método ‘obtainAdjacents(V v1, V v2)'
+     * no devuelva adyacentes no creados.
+     */
     @Test(expected = Exception.class)
     public void obtainAdjacentsFail() throws Exception {
         this.graphInts.obtainAdjacents(1);
 
     }
 
+    /**
+     * Este test comprueba que el método ‘containsVertex(V v)'
+     * devuelve el vertice creado.
+     */
     @Test
     public void containsVertexOk(){
         this.graphInts.addVertex(1);
